@@ -1,10 +1,27 @@
 // load the things we need
+var { Client } = require('pg');
 var express = require('express');
-var app = express();
+const app = express();
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
+// Banco de dados
+const client = new Client({
+    host: 'ep-calm-fire-33130223.us-east-2.aws.neon.tech',
+    port: 5432,
+    database: 'BD1',
+    user: 'ThiagoFreitasFreelancer',
+    password: 'j5sa6dJLNBlK',
+    ssl: {
+        require: true
+    },
+    types: {
+        options: 'project=ep-calm-fire-33130223'
+    }
+});
+
+client.connect();
 // use res.render to load up an ejs view file
 
 // index page
