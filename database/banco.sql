@@ -17,7 +17,7 @@ SET check_function_bodies = false;
 -- ddl-end --
 
 -- object: public."Account" | type: TABLE --
-CREATE TABLE public."Account"(
+CREATE TABLE IF NOT EXISTS public."Account"(
 	name varchar(100),
 	password varchar(100),
 	cpf bigint,
@@ -39,7 +39,7 @@ CREATE TABLE public."Account"(
 );
 -- ddl-end --
 -- object: public."Adress" | type: TABLE --
-CREATE TABLE public."Adress"(
+CREATE TABLE IF NOT EXISTS public."Adress"(
 	account_id integer,
 	city varchar(100),
 	neighborhood varchar(100),
@@ -56,7 +56,7 @@ ON DELETE SET NULL ON UPDATE CASCADE NOT DEFERRABLE;
 
 
 -- object: public."Phone" | type: TABLE --
-CREATE TABLE public."Phone"(
+CREATE TABLE IF NOT EXISTS public."Phone"(
 	account_id integer,
 	phone integer,
 	ddd integer,
@@ -74,7 +74,7 @@ ON DELETE SET NULL ON UPDATE CASCADE NOT DEFERRABLE;
 
 
 -- object: public."Email" | type: TABLE --
-CREATE TABLE public."Email"(
+CREATE TABLE IF NOT EXISTS public."Email"(
 	account_id integer,
 	name varchar(100),
 	active date,
@@ -96,7 +96,7 @@ ALTER TABLE public."Account" ADD CONSTRAINT "Account_uq" UNIQUE ("account_id_Ema
 
 
 -- object: public."TypeAccount" | type: TABLE --
-CREATE TABLE public."TypeAccount"(
+CREATE TABLE IF NOT EXISTS public."TypeAccount"(
 	id integer,
 	type varchar,
 	edit boolean,
@@ -115,7 +115,7 @@ ON DELETE SET NULL ON UPDATE CASCADE NOT DEFERRABLE;
 
 
 -- object: public."Hair" | type: TABLE --
-CREATE TABLE public."Hair"(
+CREATE TABLE IF NOT EXISTS public."Hair"(
 	type varchar(100),
 	level integer,
 	letter smallint,
@@ -132,7 +132,11 @@ ON DELETE SET NULL ON UPDATE CASCADE NOT DEFERRABLE;
 
 
 -- object: "Account_uq1" | type: CONSTRAINT --
-ALTER TABLE public."Account" ADD CONSTRAINT "Account_uq1" UNIQUE ("id_Hair");
+--ALTER TABLE public."Account" ADD CONSTRAINT "Account_uq1" ("id_Hair");
+
+ALTER TABLE public."Account" ADD CONSTRAINT "Account_uq1" FOREIGN KEY ("id_Hair")
+REFERENCES public."Hair" (id) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE NOT DEFERRABLE;
 -- ddl-end --
 
 

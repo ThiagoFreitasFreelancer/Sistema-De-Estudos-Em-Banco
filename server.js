@@ -13,24 +13,22 @@ const client = new Client({
     database: 'BD1',
     user: 'ThiagoFreitasFreelancer',
     password: 'j5sa6dJLNBlK',
-    ssl: {
-        require: true
-    },
-    types: {
-        options: 'project=ep-calm-fire-33130223'
-    }
+    ssl: true,
+    connectionString: 'postgresql://ThiagoFreitasFreelancer:j5sa6dJLNBlK@ep-calm-fire-33130223.us-east-2.aws.neon.tech/BD1?sslmode=require'
 });
 
 client.connect();
 // use res.render to load up an ejs view file
 
 // index page
-app.get('/', function(req, res) {
-    var mascots = [
-        { name: 'Sammy', organization: "DigitalOcean", birth_year: 2012},
-        { name: 'Tux', organization: "Linux", birth_year: 1996},
-        { name: 'Moby Dock', organization: "Docker", birth_year: 2013}
-    ];
+app.get('/', async (req, res) => {
+    var mascots = await client.query('SELECT * FROM Account') 
+    // [
+    //     { name: 'Sammy', organization: "DigitalOcean", birth_year: 2012},
+    //     { name: 'Tux', organization: "Linux", birth_year: 1996},
+    //     { name: 'Moby Dock', organization: "Docker", birth_year: 2013}
+    // ];
+    
     var tagline = "No programming concept is complete without a cute animal mascot.";
 
     res.render('pages/index', {

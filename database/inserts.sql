@@ -1,14 +1,14 @@
-INSERT INTO public."Account" (name, password, cpf, cnpj, type_hair_id, start_date, birthday, active, avatar, "tipeAccount", "account_id_Adress", "account_id_Phone", "account_id_Email", "id_TypeAccount", "id_Hair") VALUES
-('John Doe', 'password123', 12345678900, null, 1, '2023-01-01', '1990-05-15', '2023-01-01', 1, 'Client', 1, 1, 1, 1, 1),
-('Jane Smith', 'pass456', 98765432100, null, 2, '2023-02-01', '1985-08-22', '2023-02-01', 2, 'Provider', 2, 2, 2, 2, 2),
-('Alice Johnson', 'pass789', 55555555500, null, 1, '2023-03-01', '2000-12-10', '2023-03-01', 3, 'Client', 3, 3, 3, 1, 3),
-('Bob Miller', 'testpass', 44444444400, null, 3, '2023-04-01', '1978-06-05', '2023-04-01', 4, 'Manager', 4, 4, 4, 2, 1),
-('Eva Davis', 'eva_pass', 11112222333, null, 2, '2023-05-01', '1995-04-20', '2023-05-01', 5, 'Provider', 5, 5, 5, 1, 2),
-('Mike Brown', 'mike_pass', 98765432100, null, 1, '2023-06-01', '1980-09-15', '2023-06-01', 6, 'Client', 6, 6, 6, 2, 3),
-('Linda White', 'linda_pass', 12345678900, null, 3, '2023-07-01', '1992-11-25', '2023-07-01', 7, 'Manager', 7, 7, 7, 1, 1),
-('Mark Taylor', 'mark_pass', 55555555500, null, 2, '2023-08-01', '1988-03-08', '2023-08-01', 8, 'Provider', 8, 8, 8, 2, 2),
-('Sophia Clark', 'sophia_pass', 44444444400, null, 1, '2023-09-01', '2005-07-12', '2023-09-01', 9, 'Client', 9, 9, 9, 1, 3),
-('Daniel Turner', 'daniel_pass', 11112222333, null, 3, '2023-10-01', '1975-01-30', '2023-10-01', 10, 'Manager', 10, 10, 10, 2, 1);
+INSERT INTO public."Account" (id, name, password, cpf, cnpj, type_hair_id, start_date, birthday, active, avatar, "tipeAccount", "account_id_Adress", "account_id_Phone", "account_id_Email", "id_TypeAccount", "id_Hair") VALUES
+(1,'John Doe', 'password123', 12345678901, null, 1, '2023-01-01', '1990-05-15', '2023-01-01', 1, 'Client', 1, 1, 1, 1, 1),
+(2,'Jane Smith', 'pass456', 98765432102, null, 2, '2023-02-01', '1985-08-22', '2023-02-01', 2, 'Provider', 2, 2, 2, 2, 2),
+(3,'Alice Johnson', 'pass789', 55555555503, null, 1, '2023-03-01', '2000-12-10', '2023-03-01', 3, 'Client', 3, 3, 3, 1, 3),
+(4,'Bob Miller', 'testpass', 44444444404, null, 3, '2023-04-01', '1978-06-05', '2023-04-01', 4, 'Manager', 4, 4, 4, 2, 1),
+(5,'Eva Davis', 'eva_pass', 11112222335, null, 2, '2023-05-01', '1995-04-20', '2023-05-01', 5, 'Provider', 5, 5, 5, 1, 2),
+(6.'Mike Brown', 'mike_pass', 98765432106, null, 1, '2023-06-01', '1980-09-15', '2023-06-01', 6, 'Client', 6, 6, 6, 2, 3),
+(7,'Linda White', 'linda_pass', 12345678907, null, 3, '2023-07-01', '1992-11-25', '2023-07-01', 7, 'Manager', 7, 7, 7, 1, 1),
+(8,'Mark Taylor', 'mark_pass', 55555555508, null, 2, '2023-08-01', '1988-03-08', '2023-08-01', 8, 'Provider', 8, 8, 8, 2, 2),
+(9,'Sophia Clark', 'sophia_pass', 44444444490, null, 1, '2023-09-01', '2005-07-12', '2023-09-01', 9, 'Client', 9, 9, 9, 1, 3),
+(10,'Daniel Turner', 'daniel_pass', 11112222310, null, 3, '2023-10-01', '1975-01-30', '2023-10-01', 10, 'Manager', 10, 10, 10, 2, 1);
 
 INSERT INTO public."Adress" (account_id, city, neighborhood, road) VALUES
 (1, 'City A', 'Neighborhood 1', 'Road 123'),
