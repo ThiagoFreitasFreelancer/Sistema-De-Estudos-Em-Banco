@@ -2,7 +2,7 @@
 
 -- DROP DATABASE IF EXISTS "HMSDB";
 
-CREATE DATABASE "HMSDB"
+CREATE DATABASE "GerenciadorDeSalao"
     WITH
     OWNER = postgres
     ENCODING = 'UTF8'
