@@ -2,6 +2,61 @@
 <html lang="pt-br">
 <head>
     <%- include('../partials/head'); %>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .jumbotron {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #tabela-dinamica {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #tabela-dinamica th, #tabela-dinamica td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        #tabela-dinamica th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body class="container">
 
@@ -11,25 +66,53 @@
 
 <main>
     <div class="jumbotron">
-        <h1>This is great</h1>
-        <p>Welcome to templating using EJS</p>
-        <h2>Variable</h2>
-        <p><%= tagline %></p>
-        <ul>
-            <% mascots.forEach(function(mascot) { %>
-                <li>
-                    <strong><%= mascot.name %></strong>
-                    representing <%= mascot.organization %>, born <%= mascot.birth_year %>
-                </li>
-            <% }); %>
-        </ul>
-    </div>   
+        <h1 style="text-align: center;">Table</h1>
+        <table id="tabela-dinamica">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>CPF</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% mascots.forEach((mascot) => { %>
+                    <tr>
+                        <td><%= mascot.name %></td>
+                        <td><%= mascot.cpf %></td>
+                        <td>
+                            <button onclick="editRecord('<%= mascot.id %>')">Editar</button>
+                            <button onclick="deleteRecord('<%= mascot.id %>')">Excluir</button>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
 
+        <button onclick="createNewRecord()">Criar Novo Registro</button>
+    </div>
 </main>
 
 <footer>
     <%- include('../partials/footer'); %>
 </footer>
+
+<script>
+    function editRecord(id) {
+        // Lógica para editar o registro com o ID fornecido
+        console.log("Editar registro com ID: " + id);
+    }
+
+    function deleteRecord(id) {
+        // Lógica para excluir o registro com o ID fornecido
+        console.log("Excluir registro com ID: " + id);
+    }
+
+    function createNewRecord() {
+        // Lógica para criar um novo registro
+        console.log("Criar novo registro");
+    }
+</script>
 
 </body>
 </html>

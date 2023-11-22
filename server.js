@@ -8,13 +8,11 @@ app.set('view engine', 'ejs');
 
 // Banco de dados
 const client = new Client({
-    host: 'ep-calm-fire-33130223.us-east-2.aws.neon.tech',
-    port: 5432,
-    database: 'BD1',
-    user: 'ThiagoFreitasFreelancer',
-    password: 'j5sa6dJLNBlK',
-    ssl: true,
-    connectionString: 'postgresql://ThiagoFreitasFreelancer:j5sa6dJLNBlK@ep-calm-fire-33130223.us-east-2.aws.neon.tech/BD1?sslmode=require'
+    host: '127.0.0.1',
+    port: 5433,
+    database: 'GerenciadorDeSalao',
+    user: 'thiago',
+    password: '354430'
 });
 
 client.connect();
@@ -22,18 +20,10 @@ client.connect();
 
 // index page
 app.get('/', async (req, res) => {
-    var mascots = await client.query('SELECT * FROM Account') 
-    // [
-    //     { name: 'Sammy', organization: "DigitalOcean", birth_year: 2012},
-    //     { name: 'Tux', organization: "Linux", birth_year: 1996},
-    //     { name: 'Moby Dock', organization: "Docker", birth_year: 2013}
-    // ];
-    
-    var tagline = "No programming concept is complete without a cute animal mascot.";
+    var mascots = await client.query('SELECT * FROM public."Account"')  
 
     res.render('pages/index', {
-        mascots: mascots,
-        tagline: tagline
+        mascots: mascots["rows"]
     });
 });
 
