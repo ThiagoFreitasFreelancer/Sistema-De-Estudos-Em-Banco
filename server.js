@@ -28,6 +28,15 @@ app.get('/', async (req, res) => {
     });
 });
 
+// services page
+app.get('/services', async (req, res) => {
+    var mascots = await client.query('SELECT * FROM public."Service"')  
+
+    res.render('pages/services', {
+        mascots: mascots["rows"]
+    });
+});
+
 // about page
 app.get('/about', function(req, res) {
     res.render('pages/about');
