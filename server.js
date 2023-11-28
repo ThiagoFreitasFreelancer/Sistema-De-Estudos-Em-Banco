@@ -21,7 +21,10 @@ client.connect();
 
 // index page
 app.get('/', async (req, res) => {
-    var mascots = await client.query('SELECT * FROM public."Account"')  
+
+    const query = 'SELECT * FROM "Account" WHERE "tipeAccount" LIKE' + " 'Client' "
+
+    var mascots = await client.query( query )  
 
     res.render('pages/index', {
         mascots: mascots["rows"]
@@ -30,6 +33,7 @@ app.get('/', async (req, res) => {
 
 // services page
 app.get('/services', async (req, res) => {
+    
     var mascots = await client.query('SELECT * FROM public."Service"')  
 
     res.render('pages/services', {
@@ -37,11 +41,29 @@ app.get('/services', async (req, res) => {
     });
 });
 
-// about page
-app.get('/about', function(req, res) {
-    res.render('pages/about');
+// empresas page
+app.get('/empresas', async (req, res) => {
+
+    const query = 'SELECT * FROM "Account" WHERE "tipeAccount" LIKE' + " 'Manager' "
+
+    var mascots = await client.query( query )   
+
+    res.render('pages/empresas', {
+        mascots: mascots["rows"]
+    });
 });
 
+// funcionarios page
+app.get('/funcionarios', async (req, res) => {
+    
+    const query = 'SELECT * FROM "Account" WHERE "tipeAccount" LIKE' + " 'Provider' "
+
+    var mascots = await client.query( query )  
+
+    res.render('pages/funcionarios', {
+        mascots: mascots["rows"]
+    });
+});
 
 
 app.listen(8080);
