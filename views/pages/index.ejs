@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <script type="text/javascript" src="../../script/index.js" ></script>
+<%- include('../partials/modalCreate'); %>
 <header><%- include('../partials/header'); %></header>
 <head>
     <%- include('../partials/head'); %>
@@ -61,7 +62,6 @@
     </style>
 </head>
 <body class="container">
-
 <main>
     <div class="jumbotron">
         <h1 style="text-align: center;">Contas</h1>
@@ -87,7 +87,7 @@
             </tbody>
         </table>
 
-        <button onclick="createNewRecord()">Criar Novo Registro</button>
+        <button onclick="openModal()">Criar Novo Registro</button>
     </div>
 </main>
 

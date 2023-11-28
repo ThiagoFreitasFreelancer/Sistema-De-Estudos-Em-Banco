@@ -12,3 +12,11 @@ function createNewRecord() {
     // Lógica para criar um novo registro
     console.log("Criar novo registro");
 }
+
+function openModal() {
+    document.getElementById('modalBackground').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('modalBackground').style.display = 'none';
+}
