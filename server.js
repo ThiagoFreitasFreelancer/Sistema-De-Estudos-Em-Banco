@@ -65,6 +65,10 @@ app.get('/funcionarios', async (req, res) => {
     });
 });
 
+app.get('/cadastras', async (req, res) => { 
+
+    res.render('partials/modalCreate');
+});
 
 app.listen(8080);
-console.log('8080 is the magic port');
+console.log('Funcionando');

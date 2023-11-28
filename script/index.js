@@ -14,9 +14,11 @@ function createNewRecord() {
 }
 
 function openModal() {
-    document.getElementById('modalBackground').style.display = 'flex';
+    //document.getElementById('modalBackground').style.display = 'flex';
+    window.location.href = "http://localhost:8080/cadastras"
 }
 
 function closeModal() {
-    document.getElementById('modalBackground').style.display = 'none';
+    //document.getElementById('modalBackground').style.display = 'none';
+    window.location.href = "http://localhost:8080/"
 }
