@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,6 +40,8 @@
             max-width: 400px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             position: relative;
+            max-height: 80vh; /* Defina a altura máxima do modal */
+            overflow-y: auto;
         }
 
         /* Estilo do botão de fechar */
@@ -54,6 +56,8 @@
         form {
             display: flex;
             flex-direction: column;
+            max-height: 100%; /* Garanta que o formulário não ultrapasse a altura do modal */
+            overflow-y: auto;
         }
 
         /* Estilo dos campos do formulário */
@@ -78,28 +82,50 @@
 </head>
 <body>
 
-<!-- Modal -->
-<div class="modal-background" id="modalBackground">
-    <div class="modal">
-        <!-- Botão de fechar movido para dentro do modal -->
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <!-- Formulário com os campos específicos -->
-        <form>
-            <label for="id">ID:</label>
-            <input type="text" id="id" name="id">
+    <!-- Modal -->
+    <div class="modal-background" id="modalBackground">
+        
+        <div class="modal">
+            <!-- Botão de fechar movido para dentro do modal -->
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <!-- Formulário com os campos específicos -->
+            <form method="post" action="/cadastras">
+                <label for="name">Nome:</label>
+                <input type="text" required="required" id="name" name="name">
 
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name">
+                <label for="password">Senha:</label>
+                <input type="password" required="required" id="password" name="password">
 
-            <label for="password">Senha:</label>
-            <input type="password" id="password" name="password">
+                <label for="cpf">Cpf:</label>
+                <input type="number" required="required" id="cpf" name="cpf">
 
-            <!-- Adicione outros campos aqui... -->
+                <label for="cnpj">Cnpj:</label>
+                <input type="number" required="required" id="cnpj" name="cnpj">
 
-            <input type="submit" value="Enviar">
-        </form>
+                <label for="type_hair_id">Type Hair:</label>
+                <input type="number" required="required" id="type_hair_id" name="type_hair_id">
+
+                <label for="start_date">Start Date:</label>
+                <input type="date" required="required" id="start_date" name="start_date">
+
+                <label for="birthday">Aniversario:</label>
+                <input type="date" required="required" id="birthday" name="birthday">
+
+                <label for="tipeAccount">Tipo de Conta:</label>
+                <input type="text" required="required" id="tipeAccount" name="tipeAccount">
+
+                <label for="id_TypeAccount">Tipo de Conta Id:</label>
+                <input type="number" required="required" id="id_TypeAccount" name="id_TypeAccount">
+
+                <label for="id_Hair">Cabelo Id:</label>
+                <input type="number" required="required" id="id_Hair" name="id_Hair">
+                <!-- Adicione outros campos aqui... -->
+
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+
     </div>
-</div>
 
 </body>
 </html>

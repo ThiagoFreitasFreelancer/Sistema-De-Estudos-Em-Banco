@@ -1,11 +1,13 @@
 // load the things we need
 var { Client } = require('pg');
 var express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Banco de dados
 const client = new Client({
@@ -68,6 +70,50 @@ app.get('/funcionarios', async (req, res) => {
 app.get('/cadastras', async (req, res) => { 
 
     res.render('partials/modalCreate');
+});
+
+app.post('/cadastras', async (req, res) => { 
+
+    const { 
+
+        name, 
+        password,
+        cpf,
+        cnpj,
+        type_hair_id,
+        start_date,
+        birthday,
+        tipeAccount,
+        id_TypeAccount,
+        id_Hair
+    
+    } = await req.body
+
+    const avatar = null
+    const active = '1990-01-01'
+
+    const randonId = Math.floor(Math.random() * 99999)
+    console.log( randonId )
+
+    const queri1 = 'INSERT INTO "Adress" (account_id, city, neighborhood, road) VALUES('+ randonId +","+ "'" + "City A" + "'" +","+ "'" + "Neighborhood 1 "+"'"+","+ "'" + "Road 123" +"'" + ")"
+    await client.query( queri1 )
+    console.log("1")
+
+    const queri2 = 'INSERT INTO "Phone" (account_id, phone, ddd, active, type) VALUES(' + randonId+","+ 123456789+","+ 11+","+ "'" + "2023-01-01" +"'" +","+ 1 +")"
+    await client.query( queri2 )
+    console.log("2")
+
+    const queri3 = 'INSERT INTO "Email" (account_id, name, active, email) VALUES(' + randonId+","+ "'" + "john@example.com" +"'"+","+ "'" + "2023-01-01" +"'"+","+ "'" + "john@example.com" + "'" + ")"
+    await client.query( queri3 )
+    console.log("3")
+
+    const query = 'INSERT INTO "Account"(id,name,password,cpf,cnpj,type_hair_id,start_date,birthday,active,avatar,"tipeAccount","account_id_Adress","account_id_Phone","account_id_Email","id_TypeAccount","id_Hair") VALUES('+randonId+","+"'"+name+"'"+","+"'"+password+"'"+","+cpf+","+cnpj+","+type_hair_id+","+"'"+start_date+"'"+","+"'"+birthday+"'"+","+"'"+active+"'"+","+avatar+","+"'"+tipeAccount+"'"+","+randonId+","+randonId+","+randonId+","+id_TypeAccount+","+id_Hair+ ")"
+    
+    console.log(query)
+    await client.query( query )
+
+    res.status( 200 )
+    
 });
 
 app.listen(8080);
