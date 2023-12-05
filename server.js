@@ -67,12 +67,42 @@ app.get('/funcionarios', async (req, res) => {
     });
 });
 
-app.get('/cadastras', async (req, res) => { 
+app.get('/cadastra/empresa', async (req, res) => { 
+
+    res.render('partials/modalCreateEmpresa');
+});
+
+app.post('/cadastra/empresa', async (req, res) => { 
+
+    
+});
+
+app.get('/cadastra/funcionario', async (req, res) => { 
+
+    res.render('partials/modalCreateFuncionario');
+});
+
+app.post('/cadastra/funcionario', async (req, res) => { 
+
+    
+});
+
+app.get('/cadastra/servico', async (req, res) => { 
+
+    res.render('partials/modalCreateServico');
+});
+
+app.post('/cadastra/servico', async (req, res) => { 
+
+    
+});
+
+app.get('/cadastra', async (req, res) => { 
 
     res.render('partials/modalCreate');
 });
 
-app.post('/cadastras', async (req, res) => { 
+app.post('/cadastra/user', async (req, res) => { 
 
     const { 
 
@@ -112,7 +142,7 @@ app.post('/cadastras', async (req, res) => {
     console.log(query)
     await client.query( query )
 
-    res.status( 200 )
+    res.status( 200 ).render('pages/index')
     
 });
 

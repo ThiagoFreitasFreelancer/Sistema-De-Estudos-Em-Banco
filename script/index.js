@@ -15,7 +15,22 @@ function createNewRecord() {
 
 function openModal() {
     //document.getElementById('modalBackground').style.display = 'flex';
-    window.location.href = "http://localhost:8080/cadastras"
+    window.location.href = "http://localhost:8080/cadastra"
+}
+
+function openModalEmpresa() {
+    //document.getElementById('modalBackground').style.display = 'flex';
+    window.location.href = "http://localhost:8080/cadastra/empresa"
+}
+
+function openModalFuncionario() {
+    //document.getElementById('modalBackground').style.display = 'flex';
+    window.location.href = "http://localhost:8080/cadastra/funcionario"
+}
+
+function openModalServico() {
+    //document.getElementById('modalBackground').style.display = 'flex';
+    window.location.href = "http://localhost:8080/cadastra/servico"
 }
 
 function closeModal() {
