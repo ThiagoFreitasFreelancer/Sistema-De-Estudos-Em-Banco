@@ -149,8 +149,14 @@ CREATE TABLE public."Service"(
 	service smallint,
 	id_account_service_provider integer,
 	date_service date,
-	id integer
+	id integer,
+	CONSTRAINT primareService_id PRIMARY KEY (id)
 );
+
+ALTER TABLE public."Service" ADD CONSTRAINT "account_fk" FOREIGN KEY ("id_account_service_provider")
+REFERENCES public."Account" (id) MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE NOT DEFERRABLE;
+
 -- ddl-end --
 -- object: public."Sale" | type: TABLE --
 CREATE TABLE public."Sale"(

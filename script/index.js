@@ -37,3 +37,15 @@ function closeModal() {
     //document.getElementById('modalBackground').style.display = 'none';
     window.location.href = "http://localhost:8080/"
 }
+
+function criadoComSucesso( resposta ) {
+
+    alert( resposta )
+
+}
+
+function selecionaOpcao( resposta ) {
+    
+    window.location.href = "http://localhost:8080/" + resposta
+
+}

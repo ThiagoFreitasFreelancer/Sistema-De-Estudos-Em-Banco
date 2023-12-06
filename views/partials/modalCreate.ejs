@@ -89,7 +89,10 @@
             <!-- Botão de fechar movido para dentro do modal -->
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <!-- Formulário com os campos específicos -->
-            <form method="post" action="/cadastras">
+            <form method="post" action="/cadastra/user">
+                <label for="email">Email:</label>
+                <input type="email" required="required" id="email" name="email">
+
                 <label for="name">Nome:</label>
                 <input type="text" required="required" id="name" name="name">
 
@@ -99,33 +102,16 @@
                 <label for="cpf">Cpf:</label>
                 <input type="number" required="required" id="cpf" name="cpf">
 
-                <label for="cnpj">Cnpj:</label>
-                <input type="number" required="required" id="cnpj" name="cnpj">
-
                 <label for="type_hair_id">Type Hair:</label>
                 <input type="number" required="required" id="type_hair_id" name="type_hair_id">
 
-                <label for="start_date">Start Date:</label>
-                <input type="date" required="required" id="start_date" name="start_date">
-
                 <label for="birthday">Aniversario:</label>
                 <input type="date" required="required" id="birthday" name="birthday">
-
-                <label for="tipeAccount">Tipo de Conta:</label>
-                <input type="text" required="required" id="tipeAccount" name="tipeAccount">
-
-                <label for="id_TypeAccount">Tipo de Conta Id:</label>
-                <input type="number" required="required" id="id_TypeAccount" name="id_TypeAccount">
-
-                <label for="id_Hair">Cabelo Id:</label>
-                <input type="number" required="required" id="id_Hair" name="id_Hair">
-                <!-- Adicione outros campos aqui... -->
 
                 <input type="submit" value="Enviar">
             </form>
         </div>
 
     </div>
-
 </body>
 </html>

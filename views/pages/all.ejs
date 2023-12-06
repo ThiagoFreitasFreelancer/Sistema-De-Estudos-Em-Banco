@@ -66,7 +66,17 @@
 <main>
     
     <div class="jumbotron">
-        <h1 style="text-align: center;">Clientes</h1>
+        <h1 style="text-align: center;">Todas as Contas</h1>
+        <label for="operacao">Filtro de operação:</label>
+        <select id="operacao" onchange="selecionarOperacao()">
+            <option value=""></option>
+            <option value="Nenhuma">Nenhuma</option>
+            <option value="groupByTipoConta">Group By Tipo Conta</option>
+            <option value="joinLeft">JOIN LEFT</option>
+            <option value="joinRight">JOIN RIGHT</option>
+            <option value="rollup">ROLLUP</option>
+            <option value="funcoesAgregacao">SUM(), COUNT(), MIN() e MAX()</option>
+        </select>
         <table id="tabela-dinamica">
             <thead>
                 <tr>
@@ -97,6 +107,53 @@
 <footer>
     <%- include('../partials/footer'); %>
 </footer>
+<script>
 
+    function selecionarOperacao() {
+        
+        var operacarSelecionada = document.getElementById("operacao").value
+        switch (operacarSelecionada){
+
+            case "groupByTipoConta":
+                groupByTipoConta( "groupByTipoConta" )
+                break;
+            case "joinLeft":
+                joinLeft( "joinLeft" )
+                break;
+            case "joinRight":
+                joinRight( "joinRight" )
+                break;
+            case "rollup":
+                rollup( "rollup" )
+                break;
+            case "funcoesAgregacao":
+                funcoesAgregacao( "funcoesAgregacao" )
+                break;
+
+        }
+    }
+
+    function groupByTipoConta( op ){
+        selecionaOpcao( op )
+    }
+
+    function joinLeft( op ){
+        selecionaOpcao( op )
+    }
+
+    function joinRight(op){
+        selecionaOpcao( op )
+    }
+
+    function rollup(op){
+        selecionaOpcao( op )
+    }
+
+    function funcoesAgregacao(op){
+        selecionaOpcao( op )
+    }
+
+    selecionarOperacao();
+</script>
 </body>
 </html>
