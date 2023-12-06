@@ -1,16 +1,76 @@
 function editRecord(id) {
     // Lógica para editar o registro com o ID fornecido
-    console.log("Editar registro com ID: " + id);
+    window.location.href = "http://localhost:8080/cadastra";
 }
 
-function deleteRecord(id) {
+function deleteCliente( id ) {
     // Lógica para excluir o registro com o ID fornecido
-    console.log("Excluir registro com ID: " + id);
+    $.ajax({
+        url: "http://localhost:8080/cliente/delete?id=" + id,
+        type: 'DELETE',
+        success: function (res) {
+            window.location.reload();
+            return false;
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr.responseText);
+            alert("Error deleting");
+            return false;
+        }
+    });
 }
 
-function createNewRecord() {
-    // Lógica para criar um novo registro
-    console.log("Criar novo registro");
+function deleteServico( id ) {
+    // Lógica para excluir o registro com o ID fornecido
+    $.ajax({
+        url: "http://localhost:8080/service/delete?id=" + id,
+        type: 'DELETE',
+        success: function (res) {
+            window.location.reload();
+            return false;
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr.responseText);
+            alert("Error deleting");
+            return false;
+        }
+    });
+}
+
+function deleteEmpresa( id ) {
+    // Lógica para excluir o registro com o ID fornecido
+    console.log(id)
+    $.ajax({
+        url: "http://localhost:8080/empresas/delete?id=" + id,
+        type: 'DELETE',
+        success: function (res) {
+            window.location.reload();
+            return false;
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr.responseText);
+            alert("Error deleting");
+            return false;
+        }
+    });
+}
+
+function deleteFuncionario( id ) {
+    // Lógica para excluir o registro com o ID fornecido
+    console.log(id)
+    $.ajax({
+        url: "http://localhost:8080/funcionarios/delete?id=" + id,
+        type: 'DELETE',
+        success: function (res) {
+            window.location.reload();
+            return false;
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr.responseText);
+            alert("Error deleting");
+            return false;
+        }
+    });
 }
 
 function openModal() {
@@ -36,6 +96,11 @@ function openModalServico() {
 function closeModal() {
     //document.getElementById('modalBackground').style.display = 'none';
     window.location.href = "http://localhost:8080/"
+}
+
+function closeModalService() {
+    //document.getElementById('modalBackground').style.display = 'none';
+    window.location.href = "http://localhost:8080/services"
 }
 
 function criadoComSucesso( resposta ) {

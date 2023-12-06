@@ -45,9 +45,37 @@ app.get('/cliente', async (req, res) => {
     });
 });
 
+app.delete('/cliente/delete', async (req, res) => {
+
+    const { id } = req.query
+
+    const query = 'DELETE FROM "Account" WHERE id = ' + id
+    client.query( query )  
+
+    var mascots = await client.query('SELECT * FROM "Account" WHERE "tipeAccount" LIKE' + " 'Client' ")  
+
+    res.render('pages/index', {
+        mascots: mascots["rows"]
+    });
+});
+
 // services page
 app.get('/services', async (req, res) => {
     
+    var mascots = await client.query('SELECT * FROM public."Service"')  
+
+    res.render('pages/services', {
+        mascots: mascots["rows"]
+    });
+});
+
+app.delete('/service/delete', async (req, res) => {
+
+    const { id } = req.query
+
+    const query = 'DELETE FROM "Service" WHERE id = ' + id
+    client.query( query )  
+
     var mascots = await client.query('SELECT * FROM public."Service"')  
 
     res.render('pages/services', {
@@ -67,6 +95,20 @@ app.get('/empresas', async (req, res) => {
     });
 });
 
+app.delete('/empresas/delete', async (req, res) => {
+
+    const { id } = req.query
+
+    const query = 'DELETE FROM "Account" WHERE id = ' + id
+    client.query( query )  
+
+    var mascots = await client.query('SELECT * FROM "Account" WHERE "tipeAccount" LIKE' + " 'Manager' ")  
+
+    res.render('pages/services', {
+        mascots: mascots["rows"]
+    });
+});
+
 // funcionarios page
 app.get('/funcionarios', async (req, res) => {
     
@@ -75,6 +117,20 @@ app.get('/funcionarios', async (req, res) => {
     var mascots = await client.query( query )  
 
     res.render('pages/funcionarios', {
+        mascots: mascots["rows"]
+    });
+});
+
+app.delete('/funcionarios/delete', async (req, res) => {
+
+    const { id } = req.query
+
+    const query = 'DELETE FROM "Account" WHERE id = ' + id
+    client.query( query )  
+
+    var mascots = await client.query('SELECT * FROM "Account" WHERE "tipeAccount" LIKE' + " 'Provider' ")  
+
+    res.render('pages/services', {
         mascots: mascots["rows"]
     });
 });
@@ -126,7 +182,24 @@ app.get('/cadastra/servico', async (req, res) => {
 
 app.post('/cadastra/servico', async (req, res) => { 
 
+    const { name_client, name_provider, value, service, date_service} = req.body
     
+    const randonId = Math.floor(Math.random() * 99999)
+    const client_id = 1
+    const id_account_service_provider = 1
+
+    try{
+        const queri = 'INSERT INTO "Service" (id, name_client, name_provider, client_id, value, service, id_account_service_provider, date_service) VALUES (' + randonId + "," + "'" + name_client + "'" + "," + "'" + name_provider + "'" + "," + "'" + client_id + "'" + "," + value + "," + "'" + service + "'" + "," + id_account_service_provider + "," + "'" + date_service + "'" + ')'
+        await client.query( queri )
+        res.render('partials/modalCreateServico');
+    
+    }catch(e) {
+        console.log(e)
+        res.status(500)
+
+    }
+    
+
 });
 
 app.get('/cadastra', async (req, res) => { 
@@ -219,8 +292,6 @@ app.get('/rollup', async (req, res) => {
 
     var mascots = await client.query('SELECT "tipeAccount", COUNT(id) AS total_accounts FROM public."Account" GROUP BY ROLLUP("tipeAccount");')  
 
-    console.log( mascots )
-
     res.render('pages/rollup', {
         mascots: mascots["rows"]
     });
@@ -228,7 +299,7 @@ app.get('/rollup', async (req, res) => {
 
 app.get('/funcoesAgregacao', async (req, res) => { 
 
-    var mascots = await client.query('SELECT * FROM public."Service"')  
+    var mascots = await client.query('SELECT "TypeAccount".type, COUNT("Account".id) AS total_accounts, SUM("Purchase".amount_product) AS total_products_purchased, MIN("Purchase".value_product) AS min_purchase_value, MAX("Purchase".value_product) AS max_purchase_value FROM public."Account" JOIN public."TypeAccount" ON "Account"."id_TypeAccount" = "TypeAccount".id LEFT JOIN public."Purchase" ON "Account".id = "Purchase".id_account GROUP BY "TypeAccount".type;')  
 
     res.render('pages/funcoesAgregacao', {
         mascots: mascots["rows"]

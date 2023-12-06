@@ -87,11 +87,20 @@
         
         <div class="modal">
             <!-- Botão de fechar movido para dentro do modal -->
-            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <span class="close-btn" onclick="closeModalService()">&times;</span>
             <!-- Formulário com os campos específicos -->
             <form method="post" action="/cadastra/servico">
-                <label for="name">Nome:</label>
-                <input type="text" required="required" id="name" name="name">
+
+                <label for="name_client">Nome:</label>
+                <input type="text" required="required" id="name_client" name="name_client">                 
+                <label for="name_provider">Funcionario:</label>
+                <input type="text" required="required" id="name_provider" name="name_provider">                 
+                <label for="value">Preço:</label>
+                <input type="number" required="required" id="value" name="value">                 
+                <label for="service">Serviço Numero:</label>
+                <input type="number" required="required" id="service" name="service">                 
+                <label for="date_service">Data:</label>
+                <input type="date" required="required" id="date_service" name="date_service"> 
 
                 <input type="submit" value="Enviar">
             </form>

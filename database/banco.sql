@@ -175,7 +175,7 @@ CREATE TABLE public."Sale"(
 -- object: public."Purchase" | type: TABLE --
 CREATE TABLE public."Purchase"(
 	nameproduct varchar(100),
-	amount_product varchar(100),
+	amount_product integer,
 	value_product float,
 	id_account integer,
 	id_company_purchase integer,
@@ -268,11 +268,11 @@ INSERT INTO public."Service" (id, name_client, name_provider, client_id, value, 
 (3,'Mike Brown', 'Mark Taylor', 6, 25.00, 3, 8, '2023-03-22'),
 (4, 'Sophia Clark', 'Daniel Turner', 9, 40.00, 1, 10, '2023-04-18');
 
-INSERT INTO public."Sale" (name_product, amount_product, price_total, client_id, account_id_sale, discount, date_sale, paid_off, reamining, product_id) VALUES
-('Shampoo', 2, 30.00, 1, 1, 5, '2023-01-20', true, 0.00, 1),
-('Conditioner', 1, 15.00, 3, 3, 2, '2023-02-12', true, 0.00, 2),
-('Haircut', 1, 20.00, 6, 6, 0, '2023-03-25', true, 0.00, 3),
-('Coloring', 1, 35.00, 9, 9, 7, '2023-04-20', false, 35.00, 4);
+INSERT INTO public."Sale" (id, name_product, amount_product, price_total, client_id, account_id_sale, discount, date_sale, paid_off, reamining, product_id) VALUES
+(1, 'Shampoo', 2, 30.00, 1, 1, 5, '2023-01-20', true, 0.00, 1),
+(2, 'Conditioner', 1, 15.00, 3, 3, 2, '2023-02-12', true, 0.00, 2),
+(3, 'Haircut', 1, 20.00, 6, 6, 0, '2023-03-25', true, 0.00, 3),
+(4, 'Coloring', 1, 35.00, 9, 9, 7, '2023-04-20', false, 35.00, 4);
 
 INSERT INTO public."Purchase" (id, nameproduct, amount_product, value_product, id_account, id_company_purchase, date_purchase, product_description) VALUES
 (1, 'Hair Dye', 10, 50.00, 4, 1, '2023-01-05', 'Permanent color for hair'),
