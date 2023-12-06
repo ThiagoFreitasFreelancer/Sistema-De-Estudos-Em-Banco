@@ -189,9 +189,9 @@ app.get('/nenhuma', async (req, res) => {
 
 app.get('/groupByTipoConta', async (req, res) => { 
 
-    var mascots = await client.query('SELECT "tipeAccount" "name" FROM public."Account" GROUP BY "tipeAccount" HAVING COUNT(id) > 1;')  
+    var mascots = await client.query('SELECT "tipeAccount", COUNT(id) AS total_clients FROM public."Account" GROUP BY "tipeAccount"  HAVING COUNT(id) > 1;')  
 
-    res.render('pages/all', {
+    res.render('pages/groupByTipoConta', {
         mascots: mascots["rows"]
     });
 
@@ -199,27 +199,29 @@ app.get('/groupByTipoConta', async (req, res) => {
 
 app.get('/joinLeft', async (req, res) => { 
 
-    var mascots = await client.query('SELECT * FROM public."Service"')  
+    var mascots = await client.query('SELECT a.name AS client_name, e.email FROM public."Account" a LEFT JOIN public."Email" e ON a.id = e.account_id;')
 
-    res.render('pages/all', {
+    res.render('pages/joinLeft', {
         mascots: mascots["rows"]
     });
 });
 
 app.get('/joinRight', async (req, res) => { 
 
-    var mascots = await client.query('SELECT * FROM public."Service"')  
+    var mascots = await client.query('SELECT e.email, a.name AS client_name FROM public."Email" e RIGHT JOIN public."Account" a ON e.account_id = a.id;')  
 
-    res.render('pages/all', {
+    res.render('pages/joinRight', {
         mascots: mascots["rows"]
     });
 });
 
 app.get('/rollup', async (req, res) => { 
 
-    var mascots = await client.query('SELECT * FROM public."Service"')  
+    var mascots = await client.query('SELECT "tipeAccount", COUNT(id) AS total_accounts FROM public."Account" GROUP BY ROLLUP("tipeAccount");')  
 
-    res.render('pages/all', {
+    console.log( mascots )
+
+    res.render('pages/rollup', {
         mascots: mascots["rows"]
     });
 });
@@ -228,7 +230,7 @@ app.get('/funcoesAgregacao', async (req, res) => {
 
     var mascots = await client.query('SELECT * FROM public."Service"')  
 
-    res.render('pages/all', {
+    res.render('pages/funcoesAgregacao', {
         mascots: mascots["rows"]
     });
 });

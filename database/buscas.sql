@@ -6,7 +6,7 @@ LIMIT 5;
 
 Consulta com GROUP BY, SUM() e HAVING:
 
-SELECT "tipeAccount", COUNT(id) AS total_clients
+SELECT "Account", COUNT(id) AS total_clients
 FROM public."Account"
 GROUP BY "tipeAccount"
 HAVING COUNT(id) > 1;

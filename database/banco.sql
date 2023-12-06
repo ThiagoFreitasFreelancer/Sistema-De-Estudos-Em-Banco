@@ -262,11 +262,11 @@ INSERT INTO public."Account" (id, name, password, cpf, cnpj, type_hair_id, start
 (9,'Sophia Clark', 'sophia_pass', 44444444490, null, 1, '2023-09-01', '2005-07-12', '2023-09-01', 9, 'Client', 9, 9, 9, 1, 3),
 (10,'Daniel Turner', 'daniel_pass', 11112222310, null, 3, '2023-10-01', '1975-01-30', '2023-10-01', 10, 'Manager', 10, 10, 10, 2, 1);
 
-INSERT INTO public."Service" (name_client, name_provider, client_id, value, service, id_account_service_provider, date_service) VALUES
-('John Doe', 'Jane Smith', 1, 50.00, 1, 2, '2023-01-15'),
-('Alice Johnson', 'Eva Davis', 3, 30.00, 2, 5, '2023-02-10'),
-('Mike Brown', 'Mark Taylor', 6, 25.00, 3, 8, '2023-03-22'),
-('Sophia Clark', 'Daniel Turner', 9, 40.00, 1, 10, '2023-04-18');
+INSERT INTO public."Service" (id, name_client, name_provider, client_id, value, service, id_account_service_provider, date_service) VALUES
+(1, 'John Doe', 'Jane Smith', 1, 50.00, 1, 2, '2023-01-15'),
+(2, 'Alice Johnson', 'Eva Davis', 3, 30.00, 2, 5, '2023-02-10'),
+(3,'Mike Brown', 'Mark Taylor', 6, 25.00, 3, 8, '2023-03-22'),
+(4, 'Sophia Clark', 'Daniel Turner', 9, 40.00, 1, 10, '2023-04-18');
 
 INSERT INTO public."Sale" (name_product, amount_product, price_total, client_id, account_id_sale, discount, date_sale, paid_off, reamining, product_id) VALUES
 ('Shampoo', 2, 30.00, 1, 1, 5, '2023-01-20', true, 0.00, 1),

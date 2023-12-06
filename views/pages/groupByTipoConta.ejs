@@ -67,6 +67,7 @@
     
     <div class="jumbotron">
         <h1 style="text-align: center;">Todas as Contas</h1>
+        <h3 style="text-align: center;">Group By tipeAccount</h3>
         <label for="operacao">Filtro de operação:</label>
         <select id="operacao" onchange="selecionarOperacao()">
             <option value=""></option>
@@ -80,22 +81,15 @@
         <table id="tabela-dinamica">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>CPF</th>
-                    <th>Tipo</th>
-                    <th>Action</th>
+                    <th>Tipo de Conta</th>
+                    <th>Quantidades</th>
                 </tr>
             </thead>
             <tbody>
                 <% mascots.forEach((mascot) => { %>
                     <tr>
-                        <td><%= mascot.name %></td>
-                        <td><%= mascot.cpf %></td>
                         <td><%= mascot.tipeAccount %></td>
-                        <td>
-                            <button onclick="editRecord('<%= mascot.id %>')">Editar</button>
-                            <button onclick="deleteRecord('<%= mascot.id %>')">Excluir</button>
-                        </td>
+                        <td><%= mascot.total_clients %></td>
                     </tr>
                 <% }) %>
             </tbody>

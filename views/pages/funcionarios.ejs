@@ -70,6 +70,7 @@
                 <tr>
                     <th>Name</th>
                     <th>CPF</th>
+                    <th>Tipo</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -78,6 +79,7 @@
                     <tr>
                         <td><%= mascot.name %></td>
                         <td><%= mascot.cpf %></td>
+                        <td><%= mascot.tipeAccount %></td>
                         <td style="text-align: left;">
                             <button onclick="editRecord('<%= mascot.id %>')">Editar</button>
                             <button onclick="deleteRecord('<%= mascot.id %>')">Excluir</button>
