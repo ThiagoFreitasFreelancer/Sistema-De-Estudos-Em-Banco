@@ -58,34 +58,39 @@ app.get('/cliente/edit', async (req, res) => {
      });
 });
 
-app.put('/cliente/edit', async (req, res) => { 
+app.post('/cliente/edited', async (req, res) => { 
 
+    
     const { 
 
         name,
-        email,
         password,
         cpf,
         type_hair_id,
-        birthday
+        birthday,
+        id
     
     } = await req.body
-    
-    const avatar = null
+
+    const avatar = 1
     const active = moment().format('YYYY-MM-DD');
     var start_date = moment().format('YYYY-MM-DD');
 
     try{
 
-        const query = 'UPDATE "Account" SET id=' + "'" + id + "'" + 'name=' + "'" + name + "'" + ',password=' + "'" + password + "'" + ',cpf=' + "'" + cpf + "'" + ',cnpj=' + "'" + cnpj + "'" + ',type_hair_id=' + "'" + type_hair_id + "'" + ',start_date=' + "'" + start_date + "'" + ',birthday=' + "'" + birthday + "'" + ',active=' + "'" + active + "'" + ',avatar=,' + "'" + avatar + "'" + ')'
-        console.log(query)
-        await client.query( query )
+        const query = 'UPDATE "Account" SET ' + 'name=' + "'" + name + "'" + ',password=' + "'" + password + "'" + ',cpf=' + "'" + cpf + "'" + ',type_hair_id=' + "'" + type_hair_id + "'" + ',start_date=' + "'" + start_date + "'" + ',birthday=' + "'" + birthday + "'" + ',active=' + "'" + active + "'" + ',avatar=' + "'" + avatar + "'" + ' WHERE id = ' + id
         
+        await client.query( query )
 
-        res.render('partials/modalCreate');
+        var mascots = await client.query('SELECT * FROM "Account" WHERE "tipeAccount" LIKE' + " 'Client' ")        
+
+        res.render('pages/index',{ 
+            mascots: mascots["rows"]
+        });
     }
     catch(erro){
         
+        console.log(erro)
         res.sendStatus( 500 )
 
     }
@@ -288,7 +293,13 @@ app.post('/cadastra/user', async (req, res) => {
         
         await client.query( query )
 
-        res.render('partials/modalCreate');
+        const queryf = 'SELECT * FROM "Account" WHERE "tipeAccount" LIKE' + " 'Client' "
+
+        mascots = await client.query( queryf )
+
+        res.render('partials/index', {
+            mascots: mascots["rows"]
+        });
     }
     catch(erro){
         

@@ -89,7 +89,11 @@
             <!-- Botão de fechar movido para dentro do modal -->
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <!-- Formulário com os campos específicos -->
-            <form method="put" action="/cliente/edit">
+            <form method="post" action="/cliente/edited">
+
+                <label for="id">Id:</label>
+                <input value="<%= mascots[0].id %>" type="text" required="required" id="id" name="id">
+
                 <label for="name">Nome:</label>
                 <input value="<%= mascots[0].name %>" type="text" required="required" id="name" name="name">
 
