@@ -1,5 +1,5 @@
 // load the things we need
-var { Client } = require('pg');
+var { Client, Query } = require('pg');
 var express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -53,54 +53,43 @@ app.get('/cliente/edit', async (req, res) => {
     const query = 'SELECT * FROM "Account" WHERE "id" = ' + id
     var mascots = await client.query( query )
 
-    console.log(mascots)
-
     res.render('partials/modalEditCliente', {
          mascots: mascots["rows"]
      });
 });
 
-// app.put('/cliente/edit', async (req, res) => { 
+app.put('/cliente/edit', async (req, res) => { 
 
-//     const { 
+    const { 
 
-//         name,
-//         email,
-//         password,
-//         cpf,
-//         type_hair_id,
-//         birthday
+        name,
+        email,
+        password,
+        cpf,
+        type_hair_id,
+        birthday
     
-//     } = await req.body
+    } = await req.body
+    
+    const avatar = null
+    const active = moment().format('YYYY-MM-DD');
+    var start_date = moment().format('YYYY-MM-DD');
 
-//     const avatar = null
-//     const active = moment().format('YYYY-MM-DD');
-//     var start_date = moment().format('YYYY-MM-DD');
+    try{
 
-//     const randonId = Math.floor(Math.random() * 99999)
-
-//     try{
-//         const queri1 = 'INSERT INTO "Adress" (account_id, city, neighborhood, road) VALUES('+ randonId +","+ "'" + "City A" + "'" +","+ "'" + "Neighborhood 1 "+"'"+","+ "'" + "Road 123" +"'" + ")"
-//         await client.query( queri1 )
-
-//         const queri2 = 'INSERT INTO "Phone" (account_id, phone, ddd, active, type) VALUES(' + randonId+","+ 123456789+","+ 11+","+ "'" + "2023-01-01" +"'" +","+ 1 +")"
-//         await client.query( queri2 )
-
-//         const queri3 = 'INSERT INTO "Email" (account_id, name, active, email) VALUES(' + randonId+","+ "'" + name +"'"+","+ "'" + "2023-01-01" +"'"+","+ "'" + email + "'" + ")"
-//         await client.query( queri3 )
-
-//         const query = 'INSERT INTO "Account"(id,name,password,cpf,cnpj,type_hair_id,start_date,birthday,active,avatar,"tipeAccount","account_id_Adress","account_id_Phone","account_id_Email","id_TypeAccount","id_Hair") VALUES('+randonId+","+"'"+name+"'"+","+"'"+password+"'"+","+cpf+","+null+","+type_hair_id+","+"'"+start_date+"'"+","+"'"+birthday+"'"+","+"'"+active+"'"+","+avatar+","+"'"+"Client"+"'"+","+randonId+","+randonId+","+randonId+","+1+","+type_hair_id+ ")"
+        const query = 'UPDATE "Account" SET id=' + "'" + id + "'" + 'name=' + "'" + name + "'" + ',password=' + "'" + password + "'" + ',cpf=' + "'" + cpf + "'" + ',cnpj=' + "'" + cnpj + "'" + ',type_hair_id=' + "'" + type_hair_id + "'" + ',start_date=' + "'" + start_date + "'" + ',birthday=' + "'" + birthday + "'" + ',active=' + "'" + active + "'" + ',avatar=,' + "'" + avatar + "'" + ')'
+        console.log(query)
+        await client.query( query )
         
-//         await client.query( query )
 
-//         res.render('partials/modalCreate');
-//     }
-//     catch(erro){
+        res.render('partials/modalCreate');
+    }
+    catch(erro){
         
-//         res.sendStatus( 500 )
+        res.sendStatus( 500 )
 
-//     }
-// });
+    }
+});
 
 app.delete('/cliente/delete', async (req, res) => {
 
