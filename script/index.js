@@ -1,6 +1,6 @@
-function editRecord(id) {
+function editCliente( id ) {
     // Lógica para editar o registro com o ID fornecido
-    window.location.href = "http://localhost:8080/cadastra";
+    window.location.href = "http://localhost:8080/cliente/edit?id=" + id
 }
 
 function deleteCliente( id ) {

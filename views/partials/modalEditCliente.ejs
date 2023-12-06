@@ -90,23 +90,21 @@
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <!-- Formulário com os campos específicos -->
             <form method="put" action="/cliente/edit">
-                <label for="email">Email:</label>
-                <input value="'<%= mascots.email %>'" type="email" required="required" id="email" name="email">
 
                 <label for="name">Nome:</label>
-                <input type="text" required="required" id="name" name="name">
+                <input value="<%= mascots.name %>" type="text" required="required" id="name" name="name">
 
                 <label for="password">Senha:</label>
-                <input type="password" required="required" id="password" name="password">
+                <input value="<%= mascots.password %>" type="password" required="required" id="password" name="password">
 
                 <label for="cpf">Cpf:</label>
-                <input type="number" required="required" id="cpf" name="cpf">
+                <input value="<%- mascots.cpf %>" type="number" required="required" id="cpf" name="cpf">
 
                 <label for="type_hair_id">Type Hair:</label>
-                <input type="number" required="required" id="type_hair_id" name="type_hair_id">
+                <input value="<%= mascots.type_hair_id %>" type="number" required="required" id="type_hair_id" name="type_hair_id">
 
                 <label for="birthday">Aniversario:</label>
-                <input type="date" required="required" id="birthday" name="birthday">
+                <input value="<%= mascots.birthday %>" type="date" required="required" id="birthday" name="birthday">
 
                 <input type="submit" value="Enviar">
             </form>
