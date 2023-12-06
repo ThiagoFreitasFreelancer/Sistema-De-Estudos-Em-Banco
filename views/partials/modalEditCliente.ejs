@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Cadastro Serviço</title>
+    <title>Modal Formulário</title>
     <script type="text/javascript" src="../../script/index.js"></script>
     <style>
         body {
@@ -88,26 +87,31 @@
         
         <div class="modal">
             <!-- Botão de fechar movido para dentro do modal -->
-            <span class="close-btn" onclick="closeModalService()">&times;</span>
+            <span class="close-btn" onclick="closeModal()">&times;</span>
             <!-- Formulário com os campos específicos -->
-            <form method="post" action="/cadastra/servico">
+            <form method="put" action="/cliente/edit">
+                <label for="email">Email:</label>
+                <input value="'<%= mascots.email %>'" type="email" required="required" id="email" name="email">
 
-                <label for="name_client">Nome:</label>
-                <input type="text" required="required" id="name_client" name="name_client">                 
-                <label for="name_provider">Funcionario:</label>
-                <input type="text" required="required" id="name_provider" name="name_provider">                 
-                <label for="value">Preço:</label>
-                <input type="number" required="required" id="value" name="value">                 
-                <label for="service">Serviço Numero:</label>
-                <input type="number" required="required" id="service" name="service">                 
-                <label for="date_service">Data:</label>
-                <input type="date" required="required" id="date_service" name="date_service"> 
+                <label for="name">Nome:</label>
+                <input type="text" required="required" id="name" name="name">
+
+                <label for="password">Senha:</label>
+                <input type="password" required="required" id="password" name="password">
+
+                <label for="cpf">Cpf:</label>
+                <input type="number" required="required" id="cpf" name="cpf">
+
+                <label for="type_hair_id">Type Hair:</label>
+                <input type="number" required="required" id="type_hair_id" name="type_hair_id">
+
+                <label for="birthday">Aniversario:</label>
+                <input type="date" required="required" id="birthday" name="birthday">
 
                 <input type="submit" value="Enviar">
             </form>
         </div>
 
     </div>
-
 </body>
 </html>
